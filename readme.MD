@@ -9,10 +9,10 @@ This addon allows users (with permission) to remove the "Last edit by" text on a
 Install through the package manager.  The addon requires no source edits so will work with all themes.
 
 ## Compatibility: ##
-- ElkArte 1.x
+- ElkArte 1.0 and 1.1
 
 ## License: ##
-This mod is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
+This addon is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
 
 ## Note: ##
 This is a port of https://github.com/Yoshi2889/RemoveLastEditMod 

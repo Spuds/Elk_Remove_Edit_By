@@ -5,7 +5,7 @@
  *
  * @package RemoveLastEdit
  * @author Yoshi2889
- * @version 0.4.0
+ * @version 1.0.0
  * @license Creative Commons Attribution-ShareAlike 3.0 Unported license
  */
 

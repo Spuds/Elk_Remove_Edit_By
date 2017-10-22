@@ -4,7 +4,7 @@
  *
  * @package RemoveLastEdit
  * @author Yoshi2889
- * @version 0.4.0
+ * @version 1.0.1
  * @license Creative Commons Attribution-ShareAlike 3.0 Unported license
  */
 
@@ -61,4 +61,17 @@ function rlem_display(&$output, &$message)
 		return;
 
 	$output['modified']['last_edit_text'] = $output['modified']['last_edit_text'] . '<sup><a href="' . $scripturl . '?action=rlem;post=' . $message['id_msg'] . '"><i class="fa fa-minus-circle"></i></a></sup>';
+}
+
+/**
+ * Integration hook, integrate_init_theme, Called from Load.php,
+ *
+ * Used here to turn on FA support in ElkArte 1.1
+ */
+function rlem_inittheme()
+{
+	global $modSettings;
+
+	if (empty($modSettings['require_font-awesome']))
+		$modSettings['require_font-awesome'] = true;
 }
