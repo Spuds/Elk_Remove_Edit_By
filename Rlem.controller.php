@@ -9,9 +9,6 @@
  * @license Creative Commons Attribution-ShareAlike 3.0 Unported license
  */
 
-if (!defined('ELK'))
-	die('No access...');
-
 /**
  * Simple controller to respond to RLEM action request
  */
@@ -19,6 +16,7 @@ class Rlem_Controller extends Action_Controller
 {
 	/**
 	 * Message Number
+	 *
 	 * @var int
 	 */
 	protected $_postid;
@@ -39,7 +37,9 @@ class Rlem_Controller extends Action_Controller
 	{
 		// Valid data
 		if (empty($_REQUEST['post']) || !is_numeric($_REQUEST['post']))
+		{
 			return;
+		}
 
 		$this->_postid = (int) $_REQUEST['post'];
 		$this->rlem_do();
@@ -58,7 +58,8 @@ class Rlem_Controller extends Action_Controller
 
 		// Check if the post is valid, an ID is what it says it is, unique.
 		$request = $db->query('', '
-			SELECT id_msg, id_topic, id_member
+			SELECT 
+				id_msg, id_topic, id_member
 			FROM {db_prefix}messages
 			WHERE id_msg = {int:msgid}
 			LIMIT 1',
@@ -67,9 +68,11 @@ class Rlem_Controller extends Action_Controller
 			)
 		);
 		if ($db->num_rows($request) == 1)
+		{
 			list($id_msg, $id_topic, $id_member) = $db->fetch_row($request);
+		}
 		$db->free_result($request);
-		
+
 		// Does it exist and are you allowed?
 		if (isset($id_msg, $id_topic, $id_member) && (allowedTo('rlem_do_any') || (($id_member == $user_info['id']) && allowedTo('rlem_do_own'))))
 		{

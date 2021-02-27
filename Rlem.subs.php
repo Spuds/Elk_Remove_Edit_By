@@ -8,9 +8,6 @@
  * @license Creative Commons Attribution-ShareAlike 3.0 Unported license
  */
 
-if (!defined('ELK'))
-	die('No access...');
-
 /**
  * The permissions, allowing people to remove either their own or others' edit sign.
  *
@@ -35,7 +32,9 @@ function rlem_permissions(&$permissionGroups, &$permissionList)
 
 	// Add them.
 	foreach ($permissions as $perm)
+	{
 		$permissionList['membergroup'][$perm] = array(false, 'rlem', 'rlem');
+	}
 }
 
 /**
@@ -47,18 +46,22 @@ function rlem_permissions(&$permissionGroups, &$permissionList)
  * @param mixed[] $output
  * @param mixed[] $message
  */
-function rlem_display(&$output, &$message)
+function rlem_display(&$output, $message)
 {
 	global $context, $scripturl;
 
 	// Make sure we need to do anything
 	if ($context['user']['is_guest'] || empty($output['modified']['name']))
+	{
 		return;
+	}
 
 	// Then check if you can do anything
 	$can_rlem = allowedTo('rlem_do_any') || (($message['id_member'] == $context['user']['id']) && allowedTo('rlem_do_own'));
 	if (!$can_rlem)
+	{
 		return;
+	}
 
 	$output['modified']['last_edit_text'] = $output['modified']['last_edit_text'] . '<sup><a href="' . $scripturl . '?action=rlem;post=' . $message['id_msg'] . '"><i class="fa fa-minus-circle"></i></a></sup>';
 }
@@ -73,5 +76,7 @@ function rlem_inittheme()
 	global $modSettings;
 
 	if (empty($modSettings['require_font-awesome']))
+	{
 		$modSettings['require_font-awesome'] = true;
+	}
 }
