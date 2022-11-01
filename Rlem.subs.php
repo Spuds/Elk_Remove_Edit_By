@@ -4,7 +4,7 @@
  *
  * @package RemoveLastEdit
  * @author Yoshi2889
- * @version 1.0.1
+ * @version 1.0.2
  * @license Creative Commons Attribution-ShareAlike 3.0 Unported license
  */
 
@@ -14,8 +14,8 @@
  * - Permissions hook, integrate_load_permissions, called from ManagePermissions.php
  * - used to add new permissions
  *
- * @param mixed[] $permissionGroups
- * @param mixed[] $permissionList
+ * @param array $permissionGroups
+ * @param array $permissionList
  */
 function rlem_permissions(&$permissionGroups, &$permissionList)
 {
@@ -43,8 +43,8 @@ function rlem_permissions(&$permissionGroups, &$permissionList)
  * - Display Hook, integrate_prepare_display_context, called from Display.controller
  * - Used to interact with the message array before its sent to the template
  *
- * @param mixed[] $output
- * @param mixed[] $message
+ * @param array $output
+ * @param array $message
  */
 function rlem_display(&$output, $message)
 {
@@ -63,20 +63,5 @@ function rlem_display(&$output, $message)
 		return;
 	}
 
-	$output['modified']['last_edit_text'] = $output['modified']['last_edit_text'] . '<sup><a href="' . $scripturl . '?action=rlem;post=' . $message['id_msg'] . '"><i class="fa fa-minus-circle"></i></a></sup>';
-}
-
-/**
- * Integration hook, integrate_init_theme, Called from Load.php,
- *
- * Used here to turn on FA support in ElkArte 1.1
- */
-function rlem_inittheme()
-{
-	global $modSettings;
-
-	if (empty($modSettings['require_font-awesome']))
-	{
-		$modSettings['require_font-awesome'] = true;
-	}
+	$output['modified']['last_edit_text'] .= '<sup><a href="' . $scripturl . '?action=rlem;post=' . $message['id_msg'] . '"><i class="icon i-delete"></i></a></sup>';
 }

@@ -74,7 +74,8 @@ class Rlem_Controller extends Action_Controller
 		$db->free_result($request);
 
 		// Does it exist and are you allowed?
-		if (isset($id_msg, $id_topic, $id_member) && (allowedTo('rlem_do_any') || (($id_member == $user_info['id']) && allowedTo('rlem_do_own'))))
+		if (isset($id_msg, $id_topic, $id_member)
+			&& (allowedTo('rlem_do_any') || (($id_member == $user_info['id']) && allowedTo('rlem_do_own'))))
 		{
 			// This clears the db fields used to determine if the post was modified,
 			$db->query('', '

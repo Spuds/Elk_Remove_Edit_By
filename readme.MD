@@ -1,18 +1,19 @@
 This addon allows users (with permission) to remove the "Last edit by" text on a post.
 
-## Features: ##
+## Features:
 - Adds a remove button next to the text.
 - Access to the button is controlled with a permission.
 - Doesn't alter the post itself.
 
-## Installation: ##
+## Installation:
 Install through the package manager.  The addon requires no source edits so will work with all themes.
 
-## Compatibility: ##
-- ElkArte 1.0 and 1.1
+## Compatibility:
+- ElkArte 1.0 and 1.1 with version 1.0.1
+- ElkArte 1.1 only with version 1.0.2
 
-## License: ##
+## License:
 This addon is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported license.
 
-## Note: ##
+## Note:
 This is a port of https://github.com/Yoshi2889/RemoveLastEditMod 
